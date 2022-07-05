@@ -1,0 +1,31 @@
+function Aula(nome, videoId) {
+  (this.nome = nome), (this.videoId = videoId);
+}
+
+const aula1 = new Aula("Bem Vindo", 123);
+const aula2 = new Aula("Até Breve", 456);
+console.log(aula1, aula2);
+console.log("");
+
+Object.entries(aula1).forEach(([chave, valor]) => {
+  console.log(`${chave}: ${valor}`);
+});
+
+console.log("");
+
+// simulando o new
+function novo(f, ...params) {
+  const obj = {};
+  obj.__proto__ = f.prototype;
+  f.apply(obj, params);
+  return obj;
+}
+
+const aula3 = novo(Aula, "Bem Vindo", 123);
+const aula4 = novo(Aula, "Até Breve", 456);
+console.log(aula3, aula4);
+console.log("");
+
+Object.entries(aula4).forEach(([chave, valor]) => {
+  console.log(`${chave}: ${valor}`);
+});
