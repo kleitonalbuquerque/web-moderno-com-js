@@ -10,5 +10,7 @@ const carrinho = [
 const paraObjeto = (json) => JSON.parse(json);
 const apenasPreco = (produto) => produto.preco;
 
+console.log(carrinho.map(paraObjeto));
+
 const resultado = carrinho.map(paraObjeto).map(apenasPreco);
 console.log(resultado);
