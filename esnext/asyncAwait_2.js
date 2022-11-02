@@ -1,35 +1,35 @@
-const http = require("http");
+function gerarNumerosEntre(min, max, numerosProibidos) {
+  if (min > max) {
+    [max, min] = [min, max];
+  }
 
-const getTurma = (letra) => {
-  const url = `http://files.cod3r.com.br/curso-js/turma${letra}.json`;
   return new Promise((resolve, reject) => {
-    http.get(url, (res) => {
-      let resultado = "";
-
-      res.on("data", (dados) => {
-        resultado += dados;
-      });
-
-      res.on("end", () => {
-        try {
-          resolve(JSON.parse(resultado));
-        } catch (e) {
-          console.log(e);
-        }
-      });
-    });
+    const fator = max - min + 1;
+    const aleatorio = parseInt(Math.random() * fator) + min;
+    if (numerosProibidos.includes(aleatorio)) {
+      reject("Número repetido!");
+    } else {
+      resolve(aleatorio);
+    }
   });
-};
+}
 
-// Recurso ES8
-// Objetivo de simplificar o uso de promises...
-let obterAlunos = async () => {
-  const ta = await getTurma("A");
-  const tb = await getTurma("B");
-  const tc = await getTurma("C");
-  return [].concat(ta, tb, tc);
-}; // retorna um objeto AsyncFunction
+async function gerarMegaSena(qtdNumeros, tentativas = 1) {
+  try {
+    const numeros = [];
+    for (let _ of Array(qtdNumeros).fill()) {
+      numeros.push(await gerarNumerosEntre(1, 60, numeros));
+    }
+    return numeros;
+  } catch (e) {
+    if (tentativas > 5) {
+      throw "Não deu certo!";
+    } else {
+      await gerarMegaSena(qtdNumeros, tentativas + 1);
+    }
+  }
+}
 
-obterAlunos()
-  .then((alunos) => alunos.map((a) => a.nome))
-  .then((nomes) => console.log(nomes));
+gerarMegaSena(15).then(console.log).catch(console.log);
+
+// gerarNumerosEntre(1, 5, [1, 2, 4]).then(console.log).catch(console.log);
