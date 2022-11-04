@@ -13,7 +13,7 @@ ReactDOM.render(
     <CoisaLinda nome="Mariana" />
     <CoisaFeia nome="Mulambo" />
     <hr />
-    <Saudacao tipo="Bom dia" nome="João" />
+    <Saudacao tipo="Bom dia" nome="José" />
   </div>,
   document.getElementById("root")
 );

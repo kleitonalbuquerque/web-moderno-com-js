@@ -3,8 +3,8 @@ import React, { Component } from "react";
 export default class Saudacao extends Component {
   // inicializa o estado com Bom dia e José
   state = {
-    tipo: "Bom dia",
-    nome: "José",
+    tipo: this.props.tipo,
+    nome: this.props.nome,
   };
 
   setTipo(e) {
