@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 
 import BomDia from "./components/BomDia";
 import Multi, { CoisaLinda, CoisaFeia } from "./components/Multiplos";
+import Saudacao from "./components/Saudacao";
 
 ReactDOM.render(
   <div>
@@ -11,6 +12,8 @@ ReactDOM.render(
     <Multi.BoaNoite nome="Maria" />
     <CoisaLinda nome="Mariana" />
     <CoisaFeia nome="Mulambo" />
+    <hr />
+    <Saudacao tipo="Bom dia" nome="João" />
   </div>,
   document.getElementById("root")
 );
