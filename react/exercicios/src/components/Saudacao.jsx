@@ -7,12 +7,14 @@ export default class Saudacao extends Component {
     nome: this.props.nome,
   };
 
+  constructor(props) {
+    super(props);
+
+    this.setTipo = this.setTipo.bind(this);
+  }
+
   setTipo(e) {
     console.log(e.target.value);
-    // let i = 1;
-    // setInterval(() => {
-    //   this.setState({ tipo: ++i });
-    // }, 1000);
     this.setState({ tipo: e.target.value });
   }
 
@@ -32,7 +34,7 @@ export default class Saudacao extends Component {
           type="text"
           placeholder="Tipo..."
           value={tipo}
-          onChange={(e) => this.setTipo(e)}
+          onChange={this.setTipo}
         />
         <input
           type="text"
