@@ -1,4 +1,7 @@
-import Filho from "./Filho";
+/* eslint-disable no-lone-blocks */
+/* eslint-disable import/no-anonymous-default-export */
+import React from "react";
+import { childrenWithProps } from "../utils/utils";
 
 export default (props) => (
   <div>
@@ -7,9 +10,8 @@ export default (props) => (
     </h1>
     <h2>Filhos</h2>
     <ul>
-      <Filho nome="Pedro" sobrenome={props.sobrenome} />
-      <Filho {...props} />
-      <Filho {...props} nome="Carla" />
+      {/* {props.children} */}
+      {childrenWithProps(props)}
     </ul>
   </div>
 );
